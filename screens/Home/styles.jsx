@@ -18,7 +18,8 @@ export const estilo = StyleSheet.create({
     form: {
         flexDirection: 'row',
         width: '100%',
-        marginTop: 56
+        marginTop: 56,
+        marginBottom: 30
     },
     input_text: {
         flex: 1,
