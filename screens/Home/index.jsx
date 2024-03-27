@@ -1,6 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native"
 import { estilo } from "./styles"
 import Card from "../../components/Card"
+import Cabecalho from "../../components/Cabecalho"
 
 export default function Home(){
 
@@ -11,19 +12,23 @@ export default function Home(){
 
     return(
         <View style={estilo.tela}>
-            <Text style={estilo.titulo}>Lista de presença</Text>
-            <Text style={estilo.sub_titulo}>12, de março de 2024</Text>
-            <View style={estilo.form}>
-                <TextInput
-                    style={estilo.input_text}
-                />
-                <TouchableOpacity style={estilo.botao}>
-                    <Text style={estilo.texto_botao}>
-                        +
-                    </Text>
-                </TouchableOpacity>
+            <Cabecalho />
+            <View style={estilo.corpo}>
+                <Text style={estilo.titulo}>Lista de presença</Text>
+                <Text style={estilo.sub_titulo}>12, de março de 2024</Text>
+                <View style={estilo.form}>
+                    <TextInput
+                        style={estilo.input_text}
+                    />
+                    <TouchableOpacity style={estilo.botao}>
+                        <Text style={estilo.texto_botao}>
+                            +
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             <FlatList 
+            style={estilo.lista}
                 data={lista}
                 keyExtractor={item => item}
                 renderItem={({item}) =>(

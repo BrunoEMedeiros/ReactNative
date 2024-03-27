@@ -4,10 +4,16 @@ export const estilo = StyleSheet.create({
     tela: {
         flex: 1,
         backgroundColor: '#A7ACD9',
+    },
+    lista:{
+        paddingLeft: 22,
+        paddingRight: 22
+    },
+    corpo:{
         padding: 22
     },
     titulo: {
-        marginTop: 40,
+        marginTop: 5,
         fontSize: 36,
         fontWeight: 'bold'
     },
@@ -18,8 +24,8 @@ export const estilo = StyleSheet.create({
     form: {
         flexDirection: 'row',
         width: '100%',
-        marginTop: 56,
-        marginBottom: 30
+        marginTop: 10,
+        marginBottom: 10
     },
     input_text: {
         flex: 1,
