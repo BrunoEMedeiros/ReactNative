@@ -1,19 +1,22 @@
-import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native"
+import { View, Text, TextInput, TouchableOpacity, FlatList, SafeAreaView } from "react-native"
 import { estilo } from "./styles"
 import Card from "../../components/Card"
-import Cabecalho from "../../components/Cabecalho"
 
 export default function Home(){
 
-    const lista = ['teste','bruno','andre',
+    const lista = ['aline','bruno','andre',
     'maria','joao','amanda','gabriele',
-    'vinicius','gabriel','vanessa','luana']
+    'vinicius','gabriel','vanessa','luana', 'josé',
+    'leonardo']
 
-
+    /*
+    Nota:
+    O componente <Cabecalho /> não foi apagado do projeto, apenas
+    foi retirado da tela <Home /> pois não é necessario no momento
+    */
     return(
         <View style={estilo.tela}>
-            <Cabecalho />
-            <View style={estilo.corpo}>
+            <View style={estilo.container}>
                 <Text style={estilo.titulo}>Lista de presença</Text>
                 <Text style={estilo.sub_titulo}>12, de março de 2024</Text>
                 <View style={estilo.form}>
@@ -27,15 +30,16 @@ export default function Home(){
                     </TouchableOpacity>
                 </View>
             </View>
-            <FlatList 
-            style={estilo.lista}
-                data={lista}
-                keyExtractor={item => item}
-                renderItem={({item}) =>(
-                    <Card key={item} name={item} />
-                )}
-                showsVerticalScrollIndicator={false}
-            />
+            <SafeAreaView style={{flex: 1, padding: 22}}>
+                <FlatList 
+                    data={lista}
+                    keyExtractor={item => item}
+                    renderItem={({item}) =>(
+                        <Card key={item} name={item} />
+                    )}
+                    showsVerticalScrollIndicator={false}
+                />
+            </SafeAreaView>
         </View>
     )
 }

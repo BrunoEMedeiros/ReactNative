@@ -5,11 +5,7 @@ export const estilo = StyleSheet.create({
         flex: 1,
         backgroundColor: '#A7ACD9',
     },
-    lista:{
-        paddingLeft: 22,
-        paddingRight: 22
-    },
-    corpo:{
+    container:{
         padding: 22
     },
     titulo: {
@@ -47,5 +43,8 @@ export const estilo = StyleSheet.create({
     },
     texto_botao: {
         fontSize: 30
+    },
+    body:{
+        padding: 20
     }
 })
