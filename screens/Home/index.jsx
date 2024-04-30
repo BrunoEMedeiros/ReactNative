@@ -19,6 +19,24 @@ export default function Home(){
       }
       setAlunos(prevState => [...prevState,texto])
     }
+
+    function deleteAluno(nome)
+    {
+        return Alert.alert('Excluir',
+        `Deseja excluir o aluno(a) ${nome}`,
+            [
+                { 
+                    text: 'Sim',
+                    onPress: () => 
+                    setAlunos(prevState => 
+                        prevState.filter(alunos => alunos != nome))
+                },
+                {
+                    text: 'Não'
+                }
+            ]
+        )
+    }
  
 
     return(
@@ -30,7 +48,7 @@ export default function Home(){
                     <TextInput
                         style={estilo.input_text}
                         placeholder="Digite o nome..."
-                        onChangeText={setTexto}
+                        onChangeText={text => setTexto(text)}
                     />
                     <TouchableOpacity 
                         style={estilo.botao}
@@ -47,7 +65,11 @@ export default function Home(){
                     data={alunos}
                     keyExtractor={item => item}
                     renderItem={({item}) =>(
-                        <Card key={item} name={item} />
+                        <Card 
+                            key={item} 
+                            name={item} 
+                            deletarAluno={deleteAluno} 
+                        />
                     )}
                     showsVerticalScrollIndicator={false}
                     ListEmptyComponent={
