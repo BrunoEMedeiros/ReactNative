@@ -1,19 +1,26 @@
-import { View, Text, TextInput, TouchableOpacity, FlatList, SafeAreaView } from "react-native"
+import { View, Text, TextInput, 
+    TouchableOpacity, FlatList, 
+    SafeAreaView, Alert } from "react-native"
+
 import { estilo } from "./styles"
 import Card from "../../components/Card"
+import { useState } from "react"
 
 export default function Home(){
 
-    const lista = ['aline','bruno','andre',
-    'maria','joao','amanda','gabriele',
-    'vinicius','gabriel','vanessa','luana', 'josé',
-    'leonardo']
+    const [alunos, setAlunos] = useState([])
+    const [texto, setTexto] = useState('')
 
-    /*
-    Nota:
-    O componente <Cabecalho /> não foi apagado do projeto, apenas
-    foi retirado da tela <Home /> pois não é necessario no momento
-    */
+    function handleAluno()
+    {
+      if(alunos.includes(texto)){
+        return Alert.alert('Ops...','Aluno(a) ja cadastrado!',
+        [ {text: 'Ok'} ] )
+      }
+      setAlunos(prevState => [...prevState,texto])
+    }
+ 
+
     return(
         <View style={estilo.tela}>
             <View style={estilo.container}>
@@ -22,8 +29,13 @@ export default function Home(){
                 <View style={estilo.form}>
                     <TextInput
                         style={estilo.input_text}
+                        placeholder="Digite o nome..."
+                        onChangeText={setTexto}
                     />
-                    <TouchableOpacity style={estilo.botao}>
+                    <TouchableOpacity 
+                        style={estilo.botao}
+                        onPress={handleAluno}
+                    >
                         <Text style={estilo.texto_botao}>
                             +
                         </Text>
@@ -32,12 +44,17 @@ export default function Home(){
             </View>
             <SafeAreaView style={{flex: 1, padding: 22}}>
                 <FlatList 
-                    data={lista}
+                    data={alunos}
                     keyExtractor={item => item}
                     renderItem={({item}) =>(
                         <Card key={item} name={item} />
                     )}
                     showsVerticalScrollIndicator={false}
+                    ListEmptyComponent={
+                        <Text style={estilo.texto_lista_vazia}>
+                            Nenhum aluno adicionado...
+                        </Text>
+                    }
                 />
             </SafeAreaView>
         </View>

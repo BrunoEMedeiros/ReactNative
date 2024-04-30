@@ -46,5 +46,10 @@ export const estilo = StyleSheet.create({
     },
     body:{
         padding: 20
+    },
+    texto_lista_vazia:{
+        fontSize:25,
+        fontWeight: 'bold',
+        color: '#fff'
     }
 })
