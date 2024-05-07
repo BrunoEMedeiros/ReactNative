@@ -26,6 +26,13 @@ export const estilo = StyleSheet.create({
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10
     },
+    botao_editar: {
+        height: 50,
+        width: 80,
+        backgroundColor: '#F5D547',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     texto_botao:{
         fontSize: 30,
         color: '#fff'

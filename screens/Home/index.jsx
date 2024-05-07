@@ -1,6 +1,7 @@
 import { View, Text, TextInput, 
     TouchableOpacity, FlatList, 
-    SafeAreaView, Alert } from "react-native"
+    SafeAreaView, Alert, 
+    Modal, Pressable} from "react-native"
 
 import { estilo } from "./styles"
 import Card from "../../components/Card"
@@ -11,6 +12,8 @@ export default function Home(){
     const [alunos, setAlunos] = useState([])
     const [texto, setTexto] = useState('')
 
+    const [modalVisible, setModalVisible] = useState(false);
+
     function handleAluno()
     {
       if(alunos.includes(texto)){
@@ -18,6 +21,10 @@ export default function Home(){
         [ {text: 'Ok'} ] )
       }
       setAlunos(prevState => [...prevState,texto])
+    }
+
+    function abrirModal(){
+        setModalVisible(!modalVisible)
     }
 
     function deleteAluno(nome)
@@ -68,6 +75,7 @@ export default function Home(){
                         <Card 
                             key={item} 
                             name={item} 
+                            abrirModal={abrirModal}
                             deletarAluno={deleteAluno} 
                         />
                     )}
@@ -79,6 +87,27 @@ export default function Home(){
                     }
                 />
             </SafeAreaView>
+            <View style={estilo.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert('Modal has been closed.');
+                    setModalVisible(!modalVisible);
+                    }}>
+                    <View style={estilo.centeredView}>
+                    <View style={estilo.modalView}>
+                        <Text style={estilo.modalText}>Hello World!</Text>
+                        <Pressable
+                        style={[estilo.button, estilo.buttonClose]}
+                        onPress={() => setModalVisible(!modalVisible)}>
+                        <Text style={estilo.textStyle}>Hide Modal</Text>
+                        </Pressable>
+                    </View>
+                    </View>
+                </Modal>
+                </View>
         </View>
     )
 }
