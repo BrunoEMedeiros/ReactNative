@@ -1,4 +1,4 @@
-import { View, Image, TextInput, TouchableOpacity, Text } from "react-native";
+import { View, Image, TextInput, Pressable} from "react-native";
 import { Icon } from 'react-native-elements'
 import styles from "./styles";
 
@@ -13,13 +13,13 @@ export default function Cabecalho(){
                     style={styles.campo_pesquisa}
                     placeholder="Procure algo..."
                 />
-                <TouchableOpacity style={styles.botao_pesquisa}>
+                <Pressable style={styles.botao_pesquisa}>
                     <Icon 
                         name="search"
                         type="material"
                         color={'#ffff'}
                     />
-                </TouchableOpacity>
+                </Pressable>
             </View>
         </View>
     )

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { estilo } from "./styles";
 import { Icon } from 'react-native-elements'
 
@@ -8,7 +8,7 @@ export default function Card({ name, abrirModal, deletarAluno}){
             <Text style={estilo.texto}>
                {name}
             </Text>
-            <TouchableOpacity 
+            <Pressable
                 style={estilo.botao_editar}
                 onPress={()=> abrirModal()}
             >
@@ -17,9 +17,9 @@ export default function Card({ name, abrirModal, deletarAluno}){
                     type='material'
                     color='#fff'
                 />
-            </TouchableOpacity>
+            </Pressable>
 
-            <TouchableOpacity 
+            <Pressable 
                 style={estilo.botao}
                 onPress={()=> deletarAluno(name)}
             >
@@ -28,7 +28,7 @@ export default function Card({ name, abrirModal, deletarAluno}){
                     type='material'
                     color='#fff'
                 />
-            </TouchableOpacity>
+            </Pressable>
         </View>
     )
 }

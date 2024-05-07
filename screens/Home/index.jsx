@@ -1,7 +1,7 @@
 import { View, Text, TextInput, 
-    TouchableOpacity, FlatList, 
+    Pressable, FlatList, 
     SafeAreaView, Alert, 
-    Modal, Pressable} from "react-native"
+    Modal} from "react-native"
 
 import { estilo } from "./styles"
 import Card from "../../components/Card"
@@ -57,14 +57,14 @@ export default function Home(){
                         placeholder="Digite o nome..."
                         onChangeText={text => setTexto(text)}
                     />
-                    <TouchableOpacity 
+                    <Pressable 
                         style={estilo.botao}
                         onPress={handleAluno}
                     >
                         <Text style={estilo.texto_botao}>
                             +
                         </Text>
-                    </TouchableOpacity>
+                    </Pressable>
                 </View>
             </View>
             <SafeAreaView style={{flex: 1, padding: 22}}>
@@ -98,12 +98,25 @@ export default function Home(){
                     }}>
                     <View style={estilo.centeredView}>
                     <View style={estilo.modalView}>
-                        <Text style={estilo.modalText}>Hello World!</Text>
+                        <Text style={estilo.modalText}>Deseja alterar o aluno(a) ?</Text>
+                        <TextInput 
+                            style={estilo.input_editar}
+                            placeholder="Nome aluno..."
+                        />
+                        <View style={{flexDirection: 'row', gap: 10}}>
                         <Pressable
-                        style={[estilo.button, estilo.buttonClose]}
-                        onPress={() => setModalVisible(!modalVisible)}>
-                        <Text style={estilo.textStyle}>Hide Modal</Text>
+                            style={[estilo.button, estilo.buttonSave]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                        >
+                            <Text style={estilo.textStyle}>Salvar</Text>
                         </Pressable>
+                        <Pressable
+                            style={[estilo.button, estilo.buttonClose]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                        >
+                            <Text style={estilo.textStyle}>Cancelar</Text>
+                        </Pressable>
+                        </View>
                     </View>
                     </View>
                 </Modal>

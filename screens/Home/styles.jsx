@@ -6,10 +6,11 @@ export const estilo = StyleSheet.create({
         backgroundColor: '#A7ACD9',
     },
     container:{
+        
         padding: 22
     },
     titulo: {
-        marginTop: 5,
+        marginTop: 50,
         fontSize: 36,
         fontWeight: 'bold'
     },
@@ -57,8 +58,10 @@ export const estilo = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 22,
+        //backgroundColor: 'rgba(0, 0, 0, 0.2)'
       },
       modalView: {
+        gap: 15,
         margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
@@ -73,13 +76,24 @@ export const estilo = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
       },
+      input_editar: {
+        backgroundColor: '#BFC4D9',
+        width: 200,
+        height: 50,
+        padding: 15,
+        borderRadius: 15
+      },
       button: {
+        height: 50,
+        width: 80,
         borderRadius: 20,
         padding: 10,
         elevation: 2,
+        justifyContent: 'center',
+        alignItems: 'center'
       },
-      buttonOpen: {
-        backgroundColor: '#F194FF',
+      buttonSave: {
+        backgroundColor: '#337357',
       },
       buttonClose: {
         backgroundColor: '#2196F3',
@@ -92,5 +106,6 @@ export const estilo = StyleSheet.create({
       modalText: {
         marginBottom: 15,
         textAlign: 'center',
+        fontSize: 20
       },
 })
