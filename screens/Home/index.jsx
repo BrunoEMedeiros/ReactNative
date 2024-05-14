@@ -30,7 +30,11 @@ export default function Home(){
     }
 
     function editAluno(nomeAntigo, nomeNovo){
-        
+        if(alunos.includes(nomeNovo))
+        {
+            return Alert.alert('Ops...','Aluno(a) ja cadastrado!',
+            [ {text: 'Ok'} ] )
+        }
         let nova_lista = [...alunos]
         let indice = nova_lista.indexOf(nomeAntigo)
         nova_lista.splice(indice, 1, nomeNovo)
