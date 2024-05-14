@@ -12,6 +12,7 @@ export default function Home(){
     const [alunos, setAlunos] = useState([])
     const [texto, setTexto] = useState('')
 
+    const [novoNomeEditar, setNovoNomeEditar] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
 
     function handleAluno()
@@ -23,7 +24,17 @@ export default function Home(){
       setAlunos(prevState => [...prevState,texto])
     }
 
-    function abrirModal(){
+    function abrirModal(nome){
+        setTexto(nome)
+        setModalVisible(!modalVisible)
+    }
+
+    function editAluno(nomeAntigo, nomeNovo){
+        
+        let nova_lista = [...alunos]
+        let indice = nova_lista.indexOf(nomeAntigo)
+        nova_lista.splice(indice, 1, nomeNovo)
+        setAlunos(nova_lista)
         setModalVisible(!modalVisible)
     }
 
@@ -101,12 +112,13 @@ export default function Home(){
                         <Text style={estilo.modalText}>Deseja alterar o aluno(a) ?</Text>
                         <TextInput 
                             style={estilo.input_editar}
-                            placeholder="Nome aluno..."
+                            placeholder={texto}
+                            onChangeText={text => setNovoNomeEditar(text)}
                         />
                         <View style={{flexDirection: 'row', gap: 10}}>
                         <Pressable
                             style={[estilo.button, estilo.buttonSave]}
-                            onPress={() => setModalVisible(!modalVisible)}
+                            onPress={() => editAluno(texto, novoNomeEditar)}
                         >
                             <Text style={estilo.textStyle}>Salvar</Text>
                         </Pressable>

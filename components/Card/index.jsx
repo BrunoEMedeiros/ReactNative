@@ -10,7 +10,7 @@ export default function Card({ name, abrirModal, deletarAluno}){
             </Text>
             <Pressable
                 style={estilo.botao_editar}
-                onPress={()=> abrirModal()}
+                onPress={()=> abrirModal(name)}
             >
                 <Icon 
                     name='edit'

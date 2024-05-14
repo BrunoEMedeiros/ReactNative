@@ -81,7 +81,8 @@ export const estilo = StyleSheet.create({
         width: 200,
         height: 50,
         padding: 15,
-        borderRadius: 15
+        borderRadius: 15,
+        fontSize: 20
       },
       button: {
         height: 50,
